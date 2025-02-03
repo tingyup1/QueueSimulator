@@ -5,122 +5,109 @@
 #include <sstream>
 #include <queue>
 #include <vector>
+#include <random>
+#include <ctime>
+
 using namespace std;
 
 struct Customer {
-    std::string name;
+    string name;
     int arrival_hour;
     int arrival_minute;
     int checkout_time;
 
-    // caculate the customer arrived time
     int getArrivalTimeInMinutes() const {
         return arrival_hour * 60 + arrival_minute;
     }
 };
 
-// read the info about customers from customer.txt
-void readCustomersFromFile(queue<Customer>& customerQueue) {
+
+int generateRandomInt(int min, int max) {
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_int_distribution<> distrib(min, max);
+    return distrib(gen);
+}
+
+void readCustomersFromFile(queue<Customer>& customerQueue, const string& filename) {
     ifstream inputFile("C:/Users/pty99/Downloads/customer.txt");
     string line;
 
     if (!inputFile.is_open()) {
-        cout << "Failed to open customers.txt!" << endl;
+        cout << "Failed to open " << "customer file" << "!" << endl;
         return;
     }
 
-    // Read the file line by line
+    int customerId = 1; 
+    // Read each line (customer name) from the file
     while (getline(inputFile, line)) {
-        cout << "Reading line: " << line << endl;  
+        Customer customer;
+        customer.name = line;  // Set the customer name from the file
 
-        stringstream ss(line); // Create a stringstream from the current line
-        Customer customer; // Declare a Customer variable to store the data
-        char colon;// This variable is used to handle the colon in the time (e.g., 10:15)
+        customer.arrival_hour = generateRandomInt(9, 22);  
+        customer.arrival_minute = generateRandomInt(0, 59); 
+        customer.checkout_time = generateRandomInt(3, 20);
 
-        string firstName, lastName;
-        getline(ss, firstName, ' '); 
-        getline(ss, lastName, ' '); 
-        customer.name = firstName + " " + lastName;  
-
-        // read other part
-        string remaining;
-        getline(ss, remaining); //read other part which include arrive time and checkout time
-
-        //parse the remaining part
-        stringstream remainingStream(remaining);  // Create a new stringstream to parse the remaining part
-        remainingStream >> customer.arrival_hour >> colon >> customer.arrival_minute >> customer.checkout_time;
-
-
-        // Check if the stringstream failed to parse the remaining data
-        if (ss.fail()) {
-            cout << "Error reading line: " << line << endl;
-            continue;
-        }
-
-        // Push the parsed customer into the queue
+        // Push the generated customer into the queue
         customerQueue.push(customer);
+        customerId++;
     }
-    cout << "Finished reading customers." << endl;
+
+    inputFile.close();
+    cout << "Finished reading customers from file." << endl;
 }
 
-// Function to write completed customers' data to a file
+// Function to simulate the checkout process for customers in the queue
+void processQueue(queue<Customer>& customerQueue, vector<Customer>& completedCustomers) {
+    while (!customerQueue.empty()) {
+        Customer customer = customerQueue.front(); // Get the first customer from the queue
+        customerQueue.pop();  // Remove this customer from the queue (they're now being processed)
+        completedCustomers.push_back(customer);  // Add the customer to completed list
+    }
+    cout << "Finished processing queue." << endl;
+}
+
+
 void writeCompletedCustomersToFile(const vector<Customer>& completedCustomers) {
     ofstream outputFile("completed_customers.txt");
 
-    // Check if the file opened successfully
     if (!outputFile.is_open()) {
         cout << "Failed to open completed_customers.txt for writing!" << endl;
         return;
     }
 
-    // Loop through each completed customer in the vector
     for (const auto& customer : completedCustomers) {
-        // Write each customer's data (name, arrival time, checkout time) to the file
         outputFile << customer.name << " "
             << customer.arrival_hour << ":" << customer.arrival_minute << " "
-            << customer.checkout_time << "\n";
+            << customer.checkout_time << "min" << "\n";
     }
 
-    // After writing, close the file to ensure all data is saved correctly
     outputFile.close();
     cout << "Finished writing completed customers." << endl;
 }
 
-// Function to simulate the checkout process for customers in the queue
-void processQueue(queue<Customer>& customerQueue, vector<Customer>& completedCustomers) {
-    // Loop until there are no more customers in the queue
-    while (!customerQueue.empty()) {
 
-        // Get the first customer from the queue (the one who will check out next)
-        Customer customer = customerQueue.front();
 
-        // Remove this customer from the queue (they're now being processed)
-        customerQueue.pop(); 
-
-        // Simulate checkout
-        completedCustomers.push_back(customer);  // Add the customer to the completed list after checkout
-    }
-
-    // Print a message after all customers have been processed
-    cout << "Finished processing queue." << endl;
-}
 
 int main() {
     queue<Customer> customerQueue;
     vector<Customer> completedCustomers;
 
-    readCustomersFromFile(customerQueue);
+    // Read customer data from file and generate random arrival/check-out times
+    readCustomersFromFile(customerQueue, "customer.txt");
+
     if (customerQueue.empty()) {
         cout << "No customers in the queue!" << endl;
         return 1;
     }
 
     processQueue(customerQueue, completedCustomers);
+
     if (completedCustomers.empty()) {
         cout << "No completed customers!" << endl;
         return 1;
     }
-   
+
     writeCompletedCustomersToFile(completedCustomers);
 
     return 0;
