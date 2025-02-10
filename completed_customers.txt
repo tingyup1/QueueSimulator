@@ -1,11 +1,13 @@
-Eve | Appliance: Headphones | Arrival: 9:39 | Package Search: 14 min | Checkout: 3 min | Total Time in Store: 17 min
-Bob | Appliance: Laptop | Arrival: 11:11 | Package Search: 12 min | Checkout: 2 min | Total Time in Store: 14 min
-Timo Armi | Appliance: Microwave | Arrival: 12:53 | Package Search: 6 min | Checkout: 8 min | Total Time in Store: 14 min
-David | Appliance: Tablet | Arrival: 14:11 | Package Search: 10 min | Checkout: 7 min | Total Time in Store: 17 min
-Tingyu Pan | Appliance: Laptop | Arrival: 14:34 | Package Search: 8 min | Checkout: 2 min | Total Time in Store: 10 min
-Frank | Appliance: Smartwatch | Arrival: 15:21 | Package Search: 11 min | Checkout: 6 min | Total Time in Store: 17 min
-Alice | Appliance: TV | Arrival: 16:40 | Package Search: 7 min | Checkout: 3 min | Total Time in Store: 10 min
-Hannah | Appliance: Monitor | Arrival: 16:51 | Package Search: 8 min | Checkout: 4 min | Total Time in Store: 12 min
-Grace | Appliance: Camera | Arrival: 18:02 | Package Search: 13 min | Checkout: 7 min | Total Time in Store: 20 min
-Charlie | Appliance: Phone | Arrival: 18:10 | Package Search: 5 min | Checkout: 9 min | Total Time in Store: 14 min
-Jing Ma | Appliance: Speaker | Arrival: 19:53 | Package Search: 14 min | Checkout: 6 min | Total Time in Store: 20 min
+Name           Appliance           Arrival   Package Search (min)Checkout (min) Total Time in Store (min)
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Eve            Headphones          10:26  15                  6              21                  
+Bob            Laptop              11:60  12                  10             22                  
+Alice          TV                  11:15  2                   2              4                   
+Timo Jarvi     Phone               12:12  6                   3              9                   
+Hannah         Monitor             12:21  8                   2              10                  
+Frank          Smartwatch          12:30  9                   4              13                  
+David          Tablet              14:34  14                  7              21                  
+Timo Armi      Microwave           15:19  10                  4              14                  
+Grace          Camera              19:80  8                   9              17                  
+Charlie        Phone               19:38  10                  8              18                  
+Boo Zhang      Speaker             21:37  6                   6              12                  

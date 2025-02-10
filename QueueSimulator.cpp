@@ -1,6 +1,7 @@
 // QueueSimulator.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+
 #include <iostream>
+#include <iomanip>
 #include <fstream>
 #include <sstream>
 #include <queue>
@@ -79,7 +80,6 @@ void processQueue(priority_queue<Customer, vector<Customer>, CompareCustomerArri
     cout << "Finished processing queue." << endl;
 }
 
-
 void writeCompletedCustomersToFile(const vector<Customer>& completedCustomers) {
     ofstream outputFile("completed_customers.txt");
 
@@ -88,18 +88,30 @@ void writeCompletedCustomersToFile(const vector<Customer>& completedCustomers) {
         return;
     }
 
+    //print out the head of list
+    outputFile << left << setw(15) << "Name"
+        << setw(20) << "Appliance"
+        << setw(10) << "Arrival"
+        << setw(20) << "Package Search (min)"
+        << setw(15) << "Checkout (min)"
+        << setw(20) << "Total Time in Store (min)" << "\n";
+    outputFile << string(150, '-') << "\n";
+
     for (const auto& customer : completedCustomers) {
-        outputFile << customer.name << " | "
-            << "Appliance: " << customer.appliance << " | "
-            << "Arrival: " << customer.arrival_hour << ":" << (customer.arrival_minute < 10 ? "0" : "") << customer.arrival_minute << " | "
-            << "Package Search: " << customer.package_search_time << " min | "
-            << "Checkout: " << customer.checkout_time << " min | "
-            << "Total Time in Store: " << customer.getTotalTimeInStore() << " min\n";
+        outputFile << left << setw(15) << customer.name
+            << setw(20) << customer.appliance
+            << setw(2) << setfill(' ') << customer.arrival_hour << ":"
+            << setw(2) << setfill('0') << customer.arrival_minute << "  "
+            << setw(20) << setfill(' ') << customer.package_search_time
+            << setw(15) << customer.checkout_time
+            << setw(20) << customer.getTotalTimeInStore() << "\n";
     }
 
     outputFile.close();
     cout << "Finished writing completed customers." << endl;
 }
+
+
 
 int main() {
     priority_queue<Customer, vector<Customer>, CompareCustomerArrival> customerQueue;
