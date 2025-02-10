@@ -1,18 +1,11 @@
-Julia Swift  14:4 7min
-Mark Johnson  11:58 13min
-Emily Carter  10:3 15min
-James Brown  13:18 7min
-Olivia Green  19:37 4min
-Michael Harris  16:18 17min
-Sophia Moore  21:56 16min
-William Clark  19:48 15min
-Mia Wright  18:56 14min
-Lucas Lee  15:27 11min
-Charlotte Adams  17:0 13min
-Ethan Scott  15:0 11min
-Amelia White  17:12 15min
-Henry Lewis  21:25 4min
-Ava Walker  22:48 10min
-Alexander Davis  18:5 10min
-Harper Martin  10:37 14min
-Tuuu UUU 18:33 9min
+Eve | Appliance: Headphones | Arrival: 9:39 | Package Search: 14 min | Checkout: 3 min | Total Time in Store: 17 min
+Bob | Appliance: Laptop | Arrival: 11:11 | Package Search: 12 min | Checkout: 2 min | Total Time in Store: 14 min
+Timo Armi | Appliance: Microwave | Arrival: 12:53 | Package Search: 6 min | Checkout: 8 min | Total Time in Store: 14 min
+David | Appliance: Tablet | Arrival: 14:11 | Package Search: 10 min | Checkout: 7 min | Total Time in Store: 17 min
+Tingyu Pan | Appliance: Laptop | Arrival: 14:34 | Package Search: 8 min | Checkout: 2 min | Total Time in Store: 10 min
+Frank | Appliance: Smartwatch | Arrival: 15:21 | Package Search: 11 min | Checkout: 6 min | Total Time in Store: 17 min
+Alice | Appliance: TV | Arrival: 16:40 | Package Search: 7 min | Checkout: 3 min | Total Time in Store: 10 min
+Hannah | Appliance: Monitor | Arrival: 16:51 | Package Search: 8 min | Checkout: 4 min | Total Time in Store: 12 min
+Grace | Appliance: Camera | Arrival: 18:02 | Package Search: 13 min | Checkout: 7 min | Total Time in Store: 20 min
+Charlie | Appliance: Phone | Arrival: 18:10 | Package Search: 5 min | Checkout: 9 min | Total Time in Store: 14 min
+Jing Ma | Appliance: Speaker | Arrival: 19:53 | Package Search: 14 min | Checkout: 6 min | Total Time in Store: 20 min
