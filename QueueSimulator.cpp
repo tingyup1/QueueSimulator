@@ -20,6 +20,7 @@ struct Customer {
     int checkout_time;
 
     int getArrivalTimeInMinutes() const {
+       
         return arrival_hour * 60 + arrival_minute;
     }
 
@@ -43,7 +44,7 @@ int generateRandomInt(int min, int max) {
 }
 
 void readCustomersFromFile(priority_queue<Customer, vector<Customer>, CompareCustomerArrival>& customerQueue, const string& filename) {
-    ifstream inputFile("C:/Users/pty99/Downloads/customer.txt");
+    ifstream inputFile("C:/Users/pty99/Downloads/customer.txt"); //change filename
     string line;
 
     if (!inputFile.is_open()) {
@@ -59,7 +60,10 @@ void readCustomersFromFile(priority_queue<Customer, vector<Customer>, CompareCus
         getline(ss, customer.appliance, ','); 
 
         customer.arrival_hour = generateRandomInt(9, 22);  
-        customer.arrival_minute = generateRandomInt(0, 59);
+        customer.arrival_minute = generateRandomInt(0, 59) % 60;
+
+        cout << "Generated time: " << customer.arrival_hour << ":" << customer.arrival_minute << endl;  //debug
+
         customer.package_search_time = generateRandomInt(2, 15);
         customer.checkout_time = generateRandomInt(2, 10); 
 
@@ -98,11 +102,12 @@ void writeCompletedCustomersToFile(const vector<Customer>& completedCustomers) {
     outputFile << string(150, '-') << "\n";
 
     for (const auto& customer : completedCustomers) {
+        
         outputFile << left << setw(15) << customer.name
             << setw(20) << customer.appliance
             << setw(2) << setfill(' ') << customer.arrival_hour << ":"
-            << setw(2) << setfill('0') << customer.arrival_minute << "  "
-            << setw(20) << setfill(' ') << customer.package_search_time
+            << setw(2) << customer.arrival_minute << " "
+            << setw(30) << setfill(' ') << customer.package_search_time
             << setw(15) << customer.checkout_time
             << setw(20) << customer.getTotalTimeInStore() << "\n";
     }
@@ -118,7 +123,7 @@ int main() {
     vector<Customer> completedCustomers;
 
     
-    readCustomersFromFile(customerQueue, "C:/Users/pty99/Downloads/customer.txt");
+    readCustomersFromFile(customerQueue, "C:/Users/pty99/Downloads/customer.txt"); //change filename
 
     if (customerQueue.empty()) {
         cout << "No customers in the queue!" << endl;
