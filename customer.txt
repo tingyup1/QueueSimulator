@@ -1,0 +1,12 @@
+Alice,TV
+Bob,Laptop
+Charlie,Phone
+David,Tablet
+Eve,Headphones
+Frank,Smartwatch
+Grace,Camera
+Hannah,Monitor
+Timo Armi,Microwave
+Boo Zhang,Speaker
+Timo Jarvi,Phones
+Rammas,Laptop
