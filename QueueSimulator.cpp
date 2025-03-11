@@ -62,12 +62,12 @@ void readCustomersFromFile(priority_queue<Customer, vector<Customer>, CompareCus
         customer.arrival_hour = generateRandomInt(9, 22);  
         customer.arrival_minute = generateRandomInt(0, 59) % 60;
 
-        cout << "Generated time: " << customer.arrival_hour << ":" << customer.arrival_minute << endl;  //debug
+       // cout << "Generated time: " << customer.arrival_hour << ":" << customer.arrival_minute << endl;  //debug
 
         customer.package_search_time = generateRandomInt(2, 15);
         customer.checkout_time = generateRandomInt(2, 10); 
 
-        customerQueue.push(customer);
+        customerQueue.push(customer);  // serve in oder of arrival time
         customerId++;
     }
 
@@ -106,8 +106,8 @@ void writeCompletedCustomersToFile(const vector<Customer>& completedCustomers) {
         outputFile << left << setw(15) << customer.name
             << setw(20) << customer.appliance
             << setw(2) << setfill(' ') << customer.arrival_hour << ":"
-            << setw(2) << customer.arrival_minute << " "
-            << setw(30) << setfill(' ') << customer.package_search_time
+            << setw(2) << customer.arrival_minute << "     "
+            << setw(30) << setw(30) << customer.package_search_time
             << setw(15) << customer.checkout_time
             << setw(20) << customer.getTotalTimeInStore() << "\n";
     }
